@@ -23,18 +23,18 @@ class Block {
   static mineBlock(lastBlock, data) {
     const timestamp = Date.now();
     const lastHash = lastBlock.hash;
-    const hash = this.hash(timestamp, lastBlock, data);
+    const hash = this.hash(timestamp, lastHash, data);
 
     return new this(timestamp, lastHash, hash, data);
   }
 
-  static hash(timestamp, lastBlock, data) {
-    return SHA256(`${timestamp}${lastBlock}${data}`).toString();
+  static hash(timestamp, lastHash, data) {
+    return SHA256(`${timestamp}${lastHash}${data}`).toString();
   }
 
   static blockHash(block) {
-    const {timestamp, lastBlock, data} = block;
-    return Block.hash(timestamp, lastBlock, data);
+    const {timestamp, lastHash, data} = block;
+    return Block.hash(timestamp, lastHash, data);
   }
 }
 
