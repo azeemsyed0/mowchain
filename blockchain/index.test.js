@@ -1,4 +1,4 @@
-const Blockchain = require('./blockchain');
+const Blockchain = require('./index');
 const Block = require('./block');
 
 describe('Blockchain', () => {
@@ -39,7 +39,7 @@ describe('Blockchain', () => {
     expect(bc.isValidChain(bc2.chain)).toBe(false);
   });
 
-  it('should replaces the chain with a valid chain', () => {
+  it('should replace the chain with a valid chain', () => {
     bc2.addBlock('goo');
     bc.replaceChain(bc2.chain);
 
